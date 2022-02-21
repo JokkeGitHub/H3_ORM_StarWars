@@ -18,6 +18,9 @@ namespace Starwars
 
 
             program.Assignment1(planets);
+            program.Assignment2(planets);
+            program.Assignment3(planets);
+            program.Assignment4(planets);
         }
 
         public void Assignment1(List<Planet> planets)
@@ -36,13 +39,82 @@ namespace Starwars
 
 
             // Lambda
-            Console.WriteLine("\nOpgave 1 med Lambda:");
+            //Console.WriteLine("\nOpgave 1 med Lambda:");
             // var queryPlanetsLambda = planets.TakeWhile(p => p.Name.StartsWith("M"));
 
             /*foreach (var name in queryPlanetsLambda)
             {
                 Console.WriteLine(name);
             }*/
+
+            Console.ReadLine();
+        }
+
+        public void Assignment2(List<Planet> planets)
+        {
+
+            // Linq 
+            Console.WriteLine("Opgave 2 med Linq");
+
+            var queryPlanetsLinq = from planet in planets
+                                   where planet.Name.Contains("y") ||
+                                   planet.Name.Contains("Y")
+                                   select planet.Name;
+            
+            foreach (var name in queryPlanetsLinq)
+            {
+                Console.WriteLine(name);
+            }
+
+            Console.ReadLine();
+        }
+
+        public void Assignment3(List<Planet> planets)
+        {
+            //Linq
+            Console.WriteLine("Opgave 3 med Linq");
+
+            var queryPlanetsLinq = from planet in planets
+                                   where planet.Name.Length > 9 &&
+                                   planet.Name.Length < 15
+                                   select planet.Name;
+
+            foreach (var name in queryPlanetsLinq)
+            {
+                Console.WriteLine(name);
+            }
+
+            Console.ReadLine();
+        }
+        public void Assignment4(List<Planet> planets)
+        {
+            Console.WriteLine("Opgave 4 med Linq");
+
+            var queryPlanetsLinq = from planet in planets
+                                   where planet.Name.IndexOf("a") > 0 &&
+                                   planet.Name.EndsWith("e")
+                                   select planet.Name;
+
+            foreach (var name in queryPlanetsLinq)
+            {
+                Console.WriteLine(name);
+            }
+
+            Console.ReadLine();
+        }
+
+
+
+        public void Assignment(List<Planet> planets)
+        {
+            Console.WriteLine("Opgave med Linq");
+
+            var queryPlanetsLinq = "";
+
+            foreach (var name in queryPlanetsLinq)
+            {
+                Console.WriteLine(name);
+            }
 
             Console.ReadLine();
         }
