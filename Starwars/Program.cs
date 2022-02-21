@@ -35,9 +35,14 @@ namespace Starwars
             }
 
 
-
             // Lambda
+            Console.WriteLine("\nOpgave 1 med Lambda:");
+            // var queryPlanetsLambda = planets.TakeWhile(p => p.Name.StartsWith("M"));
 
+            /*foreach (var name in queryPlanetsLambda)
+            {
+                Console.WriteLine(name);
+            }*/
 
             Console.ReadLine();
         }
