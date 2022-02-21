@@ -21,12 +21,19 @@ namespace Starwars
             program.Assignment2(planets);
             program.Assignment3(planets);
             program.Assignment4(planets);
+            program.Assignment5(planets);
+            program.Assignment6(planets);
+            program.Assignment7(planets);
+            program.Assignment8(planets);
+            program.Assignment9(planets);
+            //program.Assignment10(planets);
+            //program.Assignment11(planets);
+            //program.Assignment12(planets); Doesn't work. Darn lists
         }
 
         public void Assignment1(List<Planet> planets)
         {
-            // Linq
-            Console.WriteLine("Opgave 1 med Linq:");
+            Console.WriteLine("Opgave 1");
 
             var queryPlanetsLinq = from planet in planets
                                    where planet.Name.StartsWith("M")
@@ -52,9 +59,7 @@ namespace Starwars
 
         public void Assignment2(List<Planet> planets)
         {
-
-            // Linq 
-            Console.WriteLine("Opgave 2 med Linq");
+            Console.WriteLine("Opgave 2");
 
             var queryPlanetsLinq = from planet in planets
                                    where planet.Name.Contains("y") ||
@@ -71,8 +76,7 @@ namespace Starwars
 
         public void Assignment3(List<Planet> planets)
         {
-            //Linq
-            Console.WriteLine("Opgave 3 med Linq");
+            Console.WriteLine("Opgave 3");
 
             var queryPlanetsLinq = from planet in planets
                                    where planet.Name.Length > 9 &&
@@ -86,9 +90,10 @@ namespace Starwars
 
             Console.ReadLine();
         }
+
         public void Assignment4(List<Planet> planets)
         {
-            Console.WriteLine("Opgave 4 med Linq");
+            Console.WriteLine("Opgave 4");
 
             var queryPlanetsLinq = from planet in planets
                                    where planet.Name.IndexOf("a") > 0 &&
@@ -103,7 +108,160 @@ namespace Starwars
             Console.ReadLine();
         }
 
+        public void Assignment5(List<Planet> planets)
+        {
+            Console.WriteLine("Opgave 5");
 
+            var queryPlanetsLinq = from planet in planets
+                                   where planet.RotationPeriod > 40
+                                   orderby planet.RotationPeriod
+                                   select planet.Name;
+
+            foreach (var name in queryPlanetsLinq)
+            {
+                Console.WriteLine(name);
+            }
+
+            Console.ReadLine();
+        }
+
+        public void Assignment6(List<Planet> planets)
+        {
+            Console.WriteLine("Opgave 6");
+
+            var queryPlanetsLinq = from planet in planets
+                                   where planet.RotationPeriod > 10 &&
+                                   planet.RotationPeriod < 20
+                                   orderby planet.Name
+                                   select planet.Name;
+
+            foreach (var name in queryPlanetsLinq)
+            {
+                Console.WriteLine(name);
+            }
+
+            Console.ReadLine();
+        }
+
+        public void Assignment7(List<Planet> planets)
+        {
+            Console.WriteLine("Opgave 7");
+
+            var queryPlanetsLinq = from planet in planets
+                                   where planet.RotationPeriod > 30
+                                   orderby planet.RotationPeriod
+                                   orderby planet.Name
+                                   select planet.Name;
+
+            foreach (var name in queryPlanetsLinq)
+            {
+                Console.WriteLine(name);
+            }
+
+            Console.ReadLine();
+        }
+
+        public void Assignment8(List<Planet> planets)
+        {
+            Console.WriteLine("Opgave 8");
+
+            var queryPlanetsLinq = from planet in planets
+                                   where planet.Name.Contains("ba") &&
+                                   (planet.RotationPeriod < 30 ||
+                                   planet.SurfaceWater > 50)
+                                   orderby planet.SurfaceWater
+                                   orderby planet.RotationPeriod
+                                   orderby planet.Name
+                                   select planet.Name;
+
+            foreach (var name in queryPlanetsLinq)
+            {
+                Console.WriteLine(name);
+            }
+
+            Console.ReadLine();
+        }
+
+        public void Assignment9(List<Planet> planets)
+        {
+            Console.WriteLine("Opgave 9");
+
+            var queryPlanetsLinq = from planet in planets
+                                   where planet.SurfaceWater > 0
+                                   orderby planet.SurfaceWater descending
+                                   select planet.Name;
+
+            foreach (var name in queryPlanetsLinq)
+            {
+                Console.WriteLine(name);
+            }
+
+            Console.ReadLine();
+        }
+
+        // !!!!!!!!!!!!!!!!!!!!!!!!!!!!! NOT DONE !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        public void Assignment10(List<Planet> planets)
+        {
+            Console.WriteLine("Opgave 10");
+
+            var queryPlanetsLinq = "";
+
+            foreach (var name in queryPlanetsLinq)
+            {
+                Console.WriteLine(name);
+            }
+
+            Console.ReadLine();
+        }
+        // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!! NOT DONE !!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        public void Assignment11(List<Planet> planets)
+        {
+            Console.WriteLine("Opgave 11");
+
+            var queryPlanetsLinq = "";
+
+            foreach (var name in queryPlanetsLinq)
+            {
+                Console.WriteLine(name);
+            }
+
+            Console.ReadLine();
+        }
+
+        public void Assignment12(List<Planet> planets)
+        {
+            Console.WriteLine("Opgave 12");
+
+            var queryPlanetsWithAorS = from planet in planets
+                                       where planet.Name.StartsWith("A") ||
+                                       planet.Name.EndsWith("s")
+                                       select planet;
+
+            var queryPlanetsWithRainforest = from planet in planets
+                                             where planet.Terrain.Any(t => t.Contains("rainforest"))
+                                             select planet;
+
+            foreach (var name in queryPlanetsWithRainforest)
+            {
+                Console.WriteLine(name.Name);
+            }
+
+            Console.ReadLine();
+        }
+
+        public void Assignment13(List<Planet> planets)
+        {
+            Console.WriteLine("Opgave 13");
+
+            var queryPlanetsLinq = "";
+
+            foreach (var name in queryPlanetsLinq)
+            {
+                Console.WriteLine(name);
+            }
+
+            Console.ReadLine();
+        }
 
         public void Assignment(List<Planet> planets)
         {
