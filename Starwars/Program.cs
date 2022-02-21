@@ -228,6 +228,7 @@ namespace Starwars
             Console.ReadLine();
         }
 
+        //!!!!!!!!!!!!!!!!!!!!! NOT DONE !!!!!!!!!!!!!!!!!!!!!!
         public void Assignment12(List<Planet> planets)
         {
             Console.WriteLine("Opgave 12");
@@ -237,13 +238,14 @@ namespace Starwars
                                        planet.Name.EndsWith("s")
                                        select planet;
 
+            // Can't get this bloody thing to work
             var queryPlanetsWithRainforest = from planet in planets
                                              where planet.Terrain.Any(t => t.Contains("rainforest"))
                                              select planet;
 
-            foreach (var name in queryPlanetsWithRainforest)
+            foreach (var planet in queryPlanetsWithAorS)
             {
-                Console.WriteLine(name.Name);
+                Console.WriteLine(planet.Name);
             }
 
             Console.ReadLine();
