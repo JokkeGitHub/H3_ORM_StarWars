@@ -29,7 +29,7 @@ namespace Starwars
             //program.Assignment10(planets);
             //program.Assignment11(planets);
             //program.Assignment12(planets); Doesn't work. Darn lists
-            //program.Assignment13(planets);
+            program.Assignment13(planets);
         }
 
         public void Assignment1(List<Planet> planets)
@@ -258,12 +258,14 @@ namespace Starwars
             Console.WriteLine("Opgave 13");
 
             var queryPlanetsLinq = from planet in planets
-                                   where planet.Terrain.Contains("deserts")
+                                   where planet.Terrain != null
+                                        from terrain in planet.Terrain
+                                        where terrain.Contains("desert")
                                    select planet;
 
-            foreach (var name in queryPlanetsLinq)
+            foreach (var planet in queryPlanetsLinq)
             {
-                Console.WriteLine(name.Name);
+                Console.WriteLine(planet.Name);
             }
 
             Console.ReadLine();
