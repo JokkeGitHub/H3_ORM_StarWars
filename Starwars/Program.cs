@@ -26,10 +26,13 @@ namespace Starwars
             program.Assignment7(planets);
             program.Assignment8(planets);
             program.Assignment9(planets);
-            //program.Assignment10(planets);
+            program.Assignment10(planets);
             //program.Assignment11(planets);
-            //program.Assignment12(planets); Doesn't work. Darn lists
+            program.Assignment12(planets);
             program.Assignment13(planets);
+            program.Assignment14(planets);
+            program.Assignment15(planets);
+            program.Assignment16(planets);
         }
 
         public void Assignment1(List<Planet> planets)
@@ -205,20 +208,25 @@ namespace Starwars
         {
             Console.WriteLine("Opgave 10");
 
-            var queryPlanetsLinq = "";
+            var queryPlanetsLinq = from planet in planets
+                                   where planet.Diameter != null && 
+                                   planet.Population != null
+                                   orderby (4*3.14*((planet.Diameter/2)*(planet.Diameter/2)))/planet.Population ascending
+                                   select planet;
 
-            foreach (var name in queryPlanetsLinq)
+            foreach (var planet in queryPlanetsLinq)
             {
-                Console.WriteLine(name);
+                Console.WriteLine(planet.Name);
             }
 
             Console.ReadLine();
         }
-        // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!! NOT DONE !!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
         public void Assignment11(List<Planet> planets)
         {
             Console.WriteLine("Opgave 11");
 
+            // Can't seem to figure this one out
             var queryPlanetsLinq = "";
 
             foreach (var name in queryPlanetsLinq)
@@ -228,8 +236,7 @@ namespace Starwars
 
             Console.ReadLine();
         }
-
-        //!!!!!!!!!!!!!!!!!!!!! NOT DONE !!!!!!!!!!!!!!!!!!!!!!
+        
         public void Assignment12(List<Planet> planets)
         {
             Console.WriteLine("Opgave 12");
@@ -239,12 +246,15 @@ namespace Starwars
                                        planet.Name.EndsWith("s")
                                        select planet;
 
-            // Can't get this bloody thing to work
             var queryPlanetsWithRainforest = from planet in planets
-                                             where planet.Terrain.Any(t => t.Contains("rainforest"))
+                                             where planet.Terrain != null
+                                                  from terrain in planet.Terrain
+                                                  where terrain.Contains("rainforest")
                                              select planet;
 
-            foreach (var planet in queryPlanetsWithAorS)
+            var finalPlanetsList = queryPlanetsWithAorS.Union(queryPlanetsWithRainforest);
+
+            foreach (var planet in finalPlanetsList)
             {
                 Console.WriteLine(planet.Name);
             }
@@ -252,7 +262,6 @@ namespace Starwars
             Console.ReadLine();
         }
 
-        // !!!!!!!!!!!!!! Fucking lists !!!!!!!!!!!!!!!!!!
         public void Assignment13(List<Planet> planets)
         {
             Console.WriteLine("Opgave 13");
@@ -271,15 +280,54 @@ namespace Starwars
             Console.ReadLine();
         }
 
-        public void Assignment(List<Planet> planets)
+        public void Assignment14(List<Planet> planets)
         {
-            Console.WriteLine("Opgave med Linq");
+            Console.WriteLine("Opgave 14");
 
-            var queryPlanetsLinq = "";
+            var queryPlanetsLinq = from planet in planets
+                                   where planet.Terrain != null
+                                        from terrain in planet.Terrain
+                                        where terrain.Contains("swamp")
+                                   orderby planet.Name
+                                   orderby planet.RotationPeriod
+                                   select planet;
+
+            foreach (var planet in queryPlanetsLinq)
+            {
+                Console.WriteLine(planet.Name);
+            }
+
+            Console.ReadLine();
+        }
+
+        public void Assignment15(List<Planet> planets)
+        {
+            Console.WriteLine("Opgave 15");
+
+            var queryPlanetsLinq = from planet in planets
+                                   where Regex.IsMatch(planet.Name, @"([aeiuoy])\1")
+                                   select planet;
 
             foreach (var name in queryPlanetsLinq)
             {
-                Console.WriteLine(name);
+                Console.WriteLine(name.Name);
+            }
+
+            Console.ReadLine();
+        }
+
+        public void Assignment16(List<Planet> planets)
+        {
+            Console.WriteLine("Opgave 16");
+
+            var queryPlanetsLinq = from planet in planets
+                                   where Regex.IsMatch(planet.Name, @"([klrn])\1")
+                                   orderby planet.Name descending
+                                   select planet;
+
+            foreach (var planet in queryPlanetsLinq)
+            {
+                Console.WriteLine(planet.Name);
             }
 
             Console.ReadLine();
